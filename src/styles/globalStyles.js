@@ -6,7 +6,8 @@ export default createGlobalStyle `
         padding: 0;
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
-        font-family: 'Roboto Condensed', sans-serif;    
+        font-family: 'Roboto Condensed', sans-serif;
+        outline: none; 
     }
 
 `
