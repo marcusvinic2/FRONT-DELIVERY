@@ -24,10 +24,15 @@ export const ContainerItens = styled.div `
     flex-direction: column;
     justify-content: center;
 
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
     h1 {
         color: #ffffff;
         text-align: center;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 `
 
@@ -44,9 +49,8 @@ export const Input = styled.input `
     background: #FFFFFF;
     box-shadow: 3px 3px 10px rgba(74, 144, 226, 0.19);
     border-radius: 5px;
-    width: 391.42px;
-    height: 38.32px;
-    border: none;
+    height: 38px;
+    border: ${ props => (props.error ? '2px solid #cc1717' : 'none')};
     padding-left: 10px;
 `
 
@@ -63,8 +67,12 @@ export const Button = styled.button `
     line-height: 19px;
     text-align: center;
     color: #EEEEEE;
-    margin-top: 75px;
+    margin-top: 50px;
     margin-bottom: 25px;
+
+    a:hover {
+        opacity: 0.8:
+    }
 `
 
 export const EntrarLink = styled.p `
@@ -80,4 +88,13 @@ export const EntrarLink = styled.p `
         cursor: pointer;
         text-decoration: underline;
     }
+`
+
+export const ErrorMessage = styled.p `
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #cc1717;
+    margin-top: 3px;
 `
