@@ -20,7 +20,7 @@ export const Container = styled.div `
 `
 
 export const LoginImage = styled.img `
-    height: 60%;
+    height: 80%;
 
     @media(max-width: 999px) {
      display: none;
@@ -29,7 +29,7 @@ export const LoginImage = styled.img `
 `
 
 export const ContainerItens = styled.div `
-    height: 60%;    
+    height: 80%;    
     background: #373737;
     box-shadow: 0px 4px 15px rgba(74, 144, 226, 0.24);
     border-radius: 0px 10px 10px 0px;
@@ -52,7 +52,7 @@ export const ContainerItens = styled.div `
     h1 {
         color: #ffffff;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 `
 
@@ -61,7 +61,8 @@ export const P = styled.p `
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
-    margin: 25px 0px 5px 0px;
+    margin-top: ${ props => (props.error ? '12px' : '25px')};
+    margin-bottom: 5px;
     color: #ffffff;
 `
 
