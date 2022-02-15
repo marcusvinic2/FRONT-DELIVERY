@@ -1,5 +1,6 @@
 import React from "react"
 import LoginImg from '../../assets/login.png'
+import LogoImg from '../../assets/Logo.png'
 import Button from '../../components/Button'
 import { Container, LoginImage, ContainerItens, P, Input, EntrarLink, ErrorMessage } from './styles'
 import { useForm } from 'react-hook-form'
@@ -15,6 +16,7 @@ function Register() {
     //validando informações dos input de registro.
 
     const users = useUser()
+    console.log(users)
 
     const schema = Yup.object().shape({
     name: Yup.string().required('O seu nome é obrigatorio'),

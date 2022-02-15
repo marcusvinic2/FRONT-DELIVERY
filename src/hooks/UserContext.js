@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
-
 	const [userData, setUserData] = useState({})
 
 	//gravando dados do usuario no localStorage do navegador.
@@ -31,7 +30,6 @@ export const UserProvider = ({ children }) => {
 		)
 }
 
-
 export const useUser = () => {
 	const context = useContext(UserContext)
 
@@ -40,7 +38,6 @@ export const useUser = () => {
 	}
 	return context
 }
-
 
 UserProvider.propTypes = {
 	children: PropTypes.node
