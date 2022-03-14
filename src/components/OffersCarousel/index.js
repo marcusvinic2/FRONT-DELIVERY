@@ -6,7 +6,7 @@ import Offers from '../../assets/OFERTAS.png'
 import Caurosel from 'react-elastic-carousel'
 import formatCurrency from '../../utils/FormatCurrency'
 
-function OffersCarousel(){
+export function OffersCarousel(){
 	const [offers, setOffers] = useState([])
 
 	useEffect(() => {
@@ -50,5 +50,3 @@ function OffersCarousel(){
 		</Container>
 	)
 }
-
-export default OffersCarousel

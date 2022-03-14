@@ -1,7 +1,7 @@
 import React from "react"
 import LoginImg from '../../assets/login.png'
 import LogoImg from '../../assets/Logo.png'
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import { Container, LoginImage, ContainerItens, P, Input, EntrarLink, ErrorMessage } from './styles'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -12,7 +12,7 @@ import { useUser } from '../../hooks/UserContext'
 import { Link } from 'react-router-dom'
 
 
-function Register() {
+export function Register() {
     //validando informações dos input de registro.
 
     const users = useUser()
@@ -83,5 +83,3 @@ function Register() {
     </Container>
     )
 }
-
-export default Register
