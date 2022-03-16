@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { Container, HomeImg } from './styles'
+import {CategoryCarousel, OffersCarousel } from '../../components'
+
 import HomeLogo from '../../assets/banner.png'
-import {CategoryCarousel, OffersCarousel} from '../../components'
 
 export function Home(){
 	return (

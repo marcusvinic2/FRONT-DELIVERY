@@ -12,6 +12,10 @@ export const UserProvider = ({ children }) => {
 		await localStorage.setItem('uppedidos:userData', JSON.stringify(userInfo))
 	}
 
+	const logout = async () => {
+		await localStorage.removeItem('uppedidos:userData')
+	}
+
 	//recuperando dados do usuario
 	useEffect(() => {
 		const loadUserData = async () => {
@@ -26,7 +30,7 @@ export const UserProvider = ({ children }) => {
 	}, [])
 
 	return (
-		<UserContext.Provider value={{ putUserData, userData }}>{children}</UserContext.Provider>
+		<UserContext.Provider value={{ putUserData, userData, logout }}>{children}</UserContext.Provider>
 		)
 }
 
