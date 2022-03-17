@@ -9,7 +9,7 @@ import CartImg from '../../assets/cart.png'
 
 export function Header(){
 
-	const { logout } = useUser()
+	const { logout, userData } = useUser()
 	const { push, location: {pathname} } = useHistory()
 
 	const logoutUser = () => {
@@ -35,7 +35,7 @@ export function Header(){
 				</PageLink>
 
 				<ContainerText>
-					<p>Olá, Marcus</p>
+					<p>Olá, {userData.name}</p>
 					<PageLinkExit onClick={logoutUser}>Sair</PageLinkExit>
 				</ContainerText>
 			</ContainerRigth>
