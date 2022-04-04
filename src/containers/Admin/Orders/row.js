@@ -1,6 +1,10 @@
 import React from 'react'
 
-import { Container, ProductImg } from './styles'
+import { Container, ProductImg, ReactSelectStyle } from './styles'
+import api from '../../../services/api'
+
+import status from './order-status'
+import { toast } from 'react-toastify'
 
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
@@ -15,8 +19,29 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-function Row({ row }){
+function Row({ row, setOrders, orders }){
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  async function setNewStatus(id, status){
+    setIsLoading(true)
+
+    try {
+      await toast.promise(api.put(`orders/${id}`, { status }), { 
+        pending: 'Alterando status...',
+        success: 'Status Alterado',
+        error: 'Falha ao mudar status'
+      })
+      const newOrders = orders.map( order => {
+        return order._id === id ? {...order, status} : order
+      })
+      setOrders(newOrders)
+    } catch(err){
+
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <React.Fragment>
@@ -35,7 +60,20 @@ function Row({ row }){
         </TableCell>
         <TableCell>{row.name}</TableCell>
         <TableCell>{row.date}</TableCell>
-        <TableCell>{row.status}</TableCell>
+        <TableCell>
+            <ReactSelectStyle 
+              options={status.filter( sts => sts.value !== 'Todos')}
+              menuPortalTarget={document.body}
+              placeholder="Status"
+              defaultValue={ status.find( options => options.value === row.status) || null }
+
+              onChange={ newStatus => {
+                setNewStatus(row.orderId, newStatus.value)
+              }}
+
+              isLoading={isLoading}
+            />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -77,6 +115,8 @@ function Row({ row }){
 }
 
 Row.propTypes = {
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
   	name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,
